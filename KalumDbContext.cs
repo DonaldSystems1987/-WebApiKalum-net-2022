@@ -91,7 +91,7 @@ namespace WebApiKalum
             modelBuilder.Entity<ResultadoExamenAdmision>().ToTable("ResultadoExamenAdmision")
                 .HasOne<Aspirante>(r => r.Aspirante)
                 .WithMany(a => a.ResultadosExamenesAdmision)
-                .HasForeignKey(r => r.NoExpediente);
+                .HasForeignKey(r => r.NoExpediente);   
         }
     }
 }
