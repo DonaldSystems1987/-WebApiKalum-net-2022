@@ -2,6 +2,7 @@ namespace WebApiKalum.Entities
 {
     public class Aspirante
     {
+        //Personalizando una etiqueta
         public string NoExpediente { get; set; }
         public string Apellidos { get; set; }
         public string Nombres { get; set;}
