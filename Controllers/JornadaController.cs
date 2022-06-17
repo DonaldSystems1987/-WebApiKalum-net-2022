@@ -70,5 +70,19 @@ namespace WebApiKalum.Controllers
             Logger.LogInformation("Finalizando el proceso de busqueda de forma exitosa");
             return Ok(jornada);
         }
+
+        //Metodo para agregar nuevo registro
+        [HttpPost]
+        public async Task<ActionResult<Jornada>> Post([FromBody] Jornada value)
+        {
+            Logger.LogDebug("Iniciando el proceso de agregar una jornada nueva");
+            value.JornadaId = Guid.NewGuid().ToString().ToUpper();
+            await DbContext.Jornada.AddAsync(value);
+            await DbContext.SaveChangesAsync();
+            Logger.LogInformation("Finaalizando el proceso de agregar una jornada");
+            return new CreatedAtRouteResult("GetJornada",new {id = value.JornadaId}, value);
+        }
+
+        
     }
 }
