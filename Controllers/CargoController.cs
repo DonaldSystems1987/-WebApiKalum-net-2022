@@ -64,5 +64,57 @@ namespace WebApiKalum.Controllers
             Logger.LogInformation("Finalizando el proceso de busqueda de forma exitosa");
             return Ok(cargo);
         }
+
+        //Metodo para agregar nuevo registro
+        [HttpPost]
+        public async Task<ActionResult<Cargo>> Post([FromBody] Cargo value)
+        {
+            Logger.LogDebug("Iniciando el proceso de agregar un cargo nuevo");
+            value.CargoId = Guid.NewGuid().ToString().ToUpper();
+            await DbContext.Cargo.AddAsync(value);
+            await DbContext.SaveChangesAsync();
+            Logger.LogInformation("Finalizando el proceso de agregar un cargo");
+            return new CreatedAtRouteResult("GetJornada",new {id = value.CargoId}, value);
+        }
+
+        //Metodo para eliminar registro
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Cargo>> Delete(string id)
+        {
+            Cargo cargo = await DbContext.Cargo.FirstOrDefaultAsync(j => j.CargoId == id);
+            if(cargo == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                DbContext.Cargo.Remove(cargo);
+                await DbContext.SaveChangesAsync();
+                Logger.LogInformation($"Se ha eliminado correctamente el cargo con el id {id}");
+                return cargo;
+            }
+        }
+
+        //Metodo para modificar registro 
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Put(string id, [FromBody] Cargo value)
+        {
+           Cargo cargo = await DbContext.Cargo.FirstOrDefaultAsync(j => j.CargoId == id);
+           if(cargo == null)
+           {
+               Logger.LogWarning($"No existe el cargo con el id {id}");
+               return BadRequest();
+           } 
+           cargo.Descripcion = value.Descripcion;
+           cargo.Prefijo = value.Prefijo;
+           cargo.Monto = value.Monto;
+           cargo.GeneraMora = value.GeneraMora;
+           cargo.PorcentajeMora = value.PorcentajeMora;
+           DbContext.Entry(cargo).State = EntityState.Modified;
+           await DbContext.SaveChangesAsync();
+           Logger.LogInformation("Los datos han sido actualizados correctamente");
+           return NoContent();
+        }
+
     }
 }

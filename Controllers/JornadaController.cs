@@ -83,6 +83,41 @@ namespace WebApiKalum.Controllers
             return new CreatedAtRouteResult("GetJornada",new {id = value.JornadaId}, value);
         }
 
-        
+        //Metodo para eliminar registro
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Jornada>> Delete(string id)
+        {
+            Jornada jornada = await DbContext.Jornada.FirstOrDefaultAsync(j => j.JornadaId == id);
+            if(jornada == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                DbContext.Jornada.Remove(jornada);
+                await DbContext.SaveChangesAsync();
+                Logger.LogInformation($"Se ha eliminado correctamente la jornada con el id {id}");
+                return jornada;
+            }
+        }
+
+        //Metodo para modificar registro 
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Put(string id, [FromBody] Jornada value)
+        {
+           Jornada jornada = await DbContext.Jornada.FirstOrDefaultAsync(j => j.JornadaId == id);
+           if(jornada == null)
+           {
+               Logger.LogWarning($"No existe la jornada con el id {id}");
+               return BadRequest();
+           } 
+           jornada.Jorn = value.Jorn;
+           jornada.Descripcion = value.Descripcion;
+           DbContext.Entry(jornada).State = EntityState.Modified;
+           await DbContext.SaveChangesAsync();
+           Logger.LogInformation("Los datos han sido actualizados correctamente");
+           return NoContent();
+        }
+
     }
 }
