@@ -6,6 +6,7 @@ namespace WebApiKalum.Entities
     {
         [Required(ErrorMessage = "El campo {0} es requerido")]
         public string ExamenId { get; set; }
+        
         [Required(ErrorMessage = "El campo {0} es requerido")]
         public DateTime FechaExamen { get; set; }
 

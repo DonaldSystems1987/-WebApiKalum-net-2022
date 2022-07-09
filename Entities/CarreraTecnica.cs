@@ -6,6 +6,7 @@ namespace WebApiKalum.Entities
     {
         [Required(ErrorMessage = "El campo {0} es requerido")] //valida que la informacion exista
         public string CarreraId { get; set; }
+        
         [Required(ErrorMessage = "El campo {0} es requerido")] 
         [StringLength(128,MinimumLength = 5, ErrorMessage = "La cantidad minima de caracteres es {2} y maxima es {1} para el campo {0}")]
         
