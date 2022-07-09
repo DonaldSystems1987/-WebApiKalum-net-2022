@@ -213,11 +213,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\donal\\OneDrive\\Documentos\\Curso Fullstack\\Codigos 2022\\WebApi\\net\\prod\\WebApiKalum\\WebApiKalum.csproj",
+      "projectUniqueName": "C:\\Users\\donal\\OneDrive\\Documentos\\Curso Fullstack\\Codigos 2022\\Proyecto final\\WebApi\\net\\prod\\WebApiKalum\\WebApiKalum.csproj",
       "projectName": "WebApiKalum",
-      "projectPath": "C:\\Users\\donal\\OneDrive\\Documentos\\Curso Fullstack\\Codigos 2022\\WebApi\\net\\prod\\WebApiKalum\\WebApiKalum.csproj",
+      "projectPath": "C:\\Users\\donal\\OneDrive\\Documentos\\Curso Fullstack\\Codigos 2022\\Proyecto final\\WebApi\\net\\prod\\WebApiKalum\\WebApiKalum.csproj",
       "packagesPath": "C:\\Users\\donal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\donal\\OneDrive\\Documentos\\Curso Fullstack\\Codigos 2022\\WebApi\\net\\prod\\WebApiKalum\\obj\\",
+      "outputPath": "C:\\Users\\donal\\OneDrive\\Documentos\\Curso Fullstack\\Codigos 2022\\Proyecto final\\WebApi\\net\\prod\\WebApiKalum\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\donal\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -267,7 +267,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
       }
     }
   }
